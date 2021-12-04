@@ -1,6 +1,16 @@
 public class Game {
 
     
-    //WIP
-    public void createRooms(){}
+    public void play(){
+        createRooms();
+        readComms();
+    }
+    
+    public void createRooms(){
+        
+    }
+
+    private void readComms(){
+        
+    }
 }
