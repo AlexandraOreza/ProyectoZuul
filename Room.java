@@ -29,7 +29,15 @@ public class Room {
 
     @Override
     public String toString() {
-        return name + "\nDescription: "+description;
+        return name + " Description: "+description+"\nDirecciones: "+westExit+","+eastExit+","+northExit+","+southExit;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
 }
