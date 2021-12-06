@@ -29,7 +29,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return name + " Description: "+description+"\nDirecciones: "+westExit.getName()+","+eastExit.getName()+","+northExit.getName()+","+southExit.getName();
+        return name + " Description: "+description;
     }
 
     public String getName() {
