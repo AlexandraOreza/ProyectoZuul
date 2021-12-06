@@ -1,2 +1,2 @@
-origen,prueba,e,i,o
-prueba,a,origen,i,u
+origen,prueba,null,null,null
+prueba,null,origen,null,null

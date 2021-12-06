@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,7 +30,6 @@ public class Lector {
 
     public Collection<Room> obtenerCuartos(){
         String contenido = leeArchivo("files/room.txt");
-        System.out.println("Linea = "+contenido);
         Collection<Room> Cuartos = new ArrayList<>();
         Scanner scanContenido = new Scanner(contenido);
         while(scanContenido.hasNextLine()){
@@ -48,24 +48,36 @@ public class Lector {
     private void agregarSalidas(Collection<Room> Cuartos){
         String infoCuartos = leeArchivo("files/exits.txt");
         Scanner scanInfo = new Scanner(infoCuartos);
+        ArrayList<String> salidasArray = new ArrayList<>();
         while(scanInfo.hasNextLine())
         {
             String salidas = scanInfo.nextLine();
-            List<String> datos = Arrays.asList(salidas.split(","));
-            for (Room cuartoAsignar : Cuartos) {
-                generaDirecciones(datos, Cuartos, cuartoAsignar);
-            }
+            salidasArray.add(salidas);
+        }
+        int i = 0;
+        try{
+        for (Room cuartoAsignar : Cuartos) {
+            String lineaDatos = salidasArray.get(i);
+            Scanner scanLinea = new Scanner(lineaDatos);
+            scanLinea.useDelimiter(",");
+            scanLinea.next(); //Salta la primera linea que indica el nombre del cuarto.
+            generaDirecciones(scanLinea, Cuartos, cuartoAsignar);
+            i++;
+        }
+        }
+        catch(IndexOutOfBoundsException e){
+            System.out.println("Los datos sobre salidas se han acabado.");
         }
         scanInfo.close();
     }
 
-    private void generaDirecciones(List<String> datosSalidas, Collection<Room> Cuartos, Room cuartoAsignar){
+    private void generaDirecciones(Scanner scanDatos, Collection<Room> Cuartos, Room cuartoAsignar){
         Room oeste, este, norte, sur = null;
         oeste=este=norte=sur;
-        String cuartoOeste =  datosSalidas.get(1);
-        String cuartoEste =  datosSalidas.get(2);
-        String cuartoNorte =  datosSalidas.get(3);
-        String cuartoSur =  datosSalidas.get(4);
+        String cuartoOeste =  scanDatos.next();
+        String cuartoEste =  scanDatos.next();
+        String cuartoNorte =  scanDatos.next();
+        String cuartoSur =  scanDatos.next();
         for (Room cuarto : Cuartos) {
             String nombreCuarto = cuarto.getName();
             if(cuartoOeste.equals(nombreCuarto)){
@@ -85,4 +97,5 @@ public class Lector {
     }
     
 }
+
 
