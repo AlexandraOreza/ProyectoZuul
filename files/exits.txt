@@ -1,2 +1,2 @@
-origen,prueba,,,
-prueba,,origen,,
+origen,prueba,e,i,o
+prueba,a,origen,i,u

@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,31 +11,32 @@ public class Lector {
     private File archivo = null;
 
     private String leeArchivo(String path){
-        String contenido ="";
+        StringBuilder contenido = new StringBuilder();
         try{
             this.archivo = new File(path);
             Scanner scanArchivo = new Scanner(archivo);
             while(scanArchivo.hasNextLine()){
                 String linea = scanArchivo.nextLine();
-                contenido += linea+"\n";
+                contenido.append(linea+"\n");
             }
             scanArchivo.close();
             
         }catch(NullPointerException  | FileNotFoundException e){
             System.err.println("Ha ocurrido un error con el archivo indicado.");
         }
-        return contenido;
+        return contenido.toString();
     }
 
     public Collection<Room> obtenerCuartos(){
         String contenido = leeArchivo("files/room.txt");
+        System.out.println("Linea = "+contenido);
         Collection<Room> Cuartos = new ArrayList<>();
         Scanner scanContenido = new Scanner(contenido);
         while(scanContenido.hasNextLine()){
             String linea = scanContenido.nextLine();
             List<String> datos = Arrays.asList(linea.split(","));
             String nombre = datos.get(0).trim(); 
-            String descripcion = datos.get(1).trim();
+            String descripcion = datos.get(1);
             Room cuarto = new Room(nombre, descripcion);
             Cuartos.add(cuarto);
         }
@@ -48,13 +48,12 @@ public class Lector {
     private void agregarSalidas(Collection<Room> Cuartos){
         String infoCuartos = leeArchivo("files/exits.txt");
         Scanner scanInfo = new Scanner(infoCuartos);
-        List<Room> cuartosViejos = Arrays.asList((Room[])Cuartos.toArray());
         while(scanInfo.hasNextLine())
         {
             String salidas = scanInfo.nextLine();
             List<String> datos = Arrays.asList(salidas.split(","));
-            for (Room cuartoAsignar : cuartosViejos) {
-                generaDirecciones(datos, cuartosViejos, cuartoAsignar);
+            for (Room cuartoAsignar : Cuartos) {
+                generaDirecciones(datos, Cuartos, cuartoAsignar);
             }
         }
         scanInfo.close();
@@ -86,3 +85,4 @@ public class Lector {
     }
     
 }
+
