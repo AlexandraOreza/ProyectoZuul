@@ -1,1 +1,1 @@
-origen,Es un nuevo mundo,null(norte),null(este),cocina(sur),corredor(este)
+origen,Es un nuevo mundo,null,null,cocina,corredor
