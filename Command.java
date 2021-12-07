@@ -6,6 +6,16 @@ public class Command {
         comando = prefijo;
         adicionComando = adicion;
     }
-    
 
+    public String getComando() {
+        return comando;
+    }
+
+    public String getAdicionComando() {
+        return adicionComando;
+    }
+    
+    public boolean contieneComando(){
+        return comando != null ? true : false;
+    }
 }
