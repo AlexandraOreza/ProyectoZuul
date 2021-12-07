@@ -18,4 +18,7 @@ public class Command {
     public boolean contieneComando(){
         return comando != null ? true : false;
     }
+    public boolean contieneAdicionComando(){
+        return adicionComando != null ? true : false;
+    }
 }
