@@ -1,23 +1,35 @@
+import java.util.NoSuchElementException;
+
 public class Game {
 
     private Room currentRoom;
+    private Lector lector;
 
-    
     public void play(){
+        lector = new Lector();
         createRooms();
-        readComms();
+        muestraBienvenida();
+        leerComandos();
     }
     
-    public void createRooms(){  
-        currentRoom = /**Metodo para obtener el main room */ ;
+    public void createRooms(){ 
+        try{
+        currentRoom = lector.obtenerCuartos().iterator().next();
+        }catch(NoSuchElementException e){
+            currentRoom = null;
+            System.out.println("AAA");
+        }
     }
 
-    private void readComms(){
-        
+    private void leerComandos(){
+        Parser entradaUsuario = new Parser();
+
+        while(true){
+            entradaUsuario.obtenerComando();
+        }
     }
 
-    private void printWelcome(){
-        
+    private void muestraBienvenida(){ 
         System.out.println();
         System.out.println("Bienvenido al mundo de Zuul");
         System.out.println("Mundo de Zuul es un nuevo, juego de aventura muy aburrido.");
@@ -25,18 +37,7 @@ public class Game {
         System.out.println();
         System.out.println("Tu estas " + currentRoom);
         System.out.print("Salir: ");
-        if(currentRoom.northExit != null) {
-            System.out.print("Norte ");
-        }
-        if(currentRoom.eastExit != null) {
-            System.out.print("Este ");
-        }
-        if(currentRoom.southExit != null) {
-            System.out.print("South ");
-        }
-        if(currentRoom.westExit != null) {
-            System.out.print("Oeste ");
-        }
+        currentRoom.mostrarDirecciones();
         System.out.println();
     }
 
