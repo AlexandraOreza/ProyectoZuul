@@ -42,10 +42,10 @@ public class Room {
 
     public void mostrarDirecciones(){
         StringBuilder cadena= new StringBuilder();
-        cadena = westExit != null ? cadena.append("Oeste: "+westExit.getName()+", ") : cadena.append("Oeste: , ");
-        cadena = eastExit != null ? cadena.append("Este: "+eastExit.getName()+", ") : cadena.append("Este: , ");
-        cadena = northExit != null ? cadena.append("Norte: "+northExit.getName()+", ") : cadena.append("Norte: ,");
-        cadena = southExit != null ? cadena.append("Sur: "+southExit.getName()) : cadena.append("Sur: ");
+        cadena = northExit != null ? cadena.append("Norte: "+northExit.getName()+", ") : cadena.append("");
+        cadena = westExit != null ? cadena.append("Oeste: "+westExit.getName()+", ") : cadena.append(" ");
+        cadena = eastExit != null ? cadena.append("Este: "+eastExit.getName()+", ") : cadena.append(" ");
+        cadena = southExit != null ? cadena.append("Sur: "+southExit.getName()) : cadena.append(" ");
         System.out.println(cadena);
     }
     
