@@ -18,4 +18,10 @@ public class Command {
     public boolean contieneComando(){
         return comando != null ? true : false;
     }
+    public boolean contieneAdicionComando(){
+        return adicionComando != null ? true : false;
+    }
+    public boolean esSalir(){
+        return comando.equals("salir") ? true: false;
+    }
 }

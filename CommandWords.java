@@ -1,6 +1,6 @@
 public class CommandWords{
     private static final String[] comandosExistentes = {
-        "go", "quit", "help"
+        "ir", "salir", "ayuda"
     };
 
 
