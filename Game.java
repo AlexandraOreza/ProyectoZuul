@@ -1,7 +1,5 @@
 import java.util.NoSuchElementException;
 
-import javax.xml.stream.events.EntityReference;
-
 public class Game {
 
     private Room currentRoom;
@@ -74,6 +72,7 @@ public class Game {
         }
         return salir;
     }
+    
     private void irSiguienteCuarto(String direccionSalida){
         Room este = currentRoom.getEastExit();
         Room oeste= currentRoom.getWestExit();
