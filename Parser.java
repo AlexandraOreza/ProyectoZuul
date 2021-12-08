@@ -11,7 +11,7 @@ public class Parser {
 
     public Command obtenerComando(){
         Command nuevoComando=null;
-        System.out.println("[x] ");
+        System.out.print("[x] ");
         String entrada = scanEntrada.nextLine();
         String comandoPre=null,adicionComando = null;
 
