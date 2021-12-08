@@ -48,5 +48,22 @@ public class Room {
         cadena = southExit != null ? cadena.append("Sur: "+southExit.getName()) : cadena.append(" ");
         System.out.println(cadena);
     }
+
+    public Room getWestExit() {
+        return westExit;
+    }
+    public Room getEastExit() {
+        return eastExit;
+    }
+    public Room getNorthExit() {
+        return northExit;
+    }
+    public Room getSouthExit() {
+        return southExit;
+    }
+
+    public void setSouthExit(Room southExit) {
+        this.southExit = southExit;
+    }
     
 }
