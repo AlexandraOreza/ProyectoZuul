@@ -7,14 +7,13 @@ import java.util.Scanner;
 public class RoomBuilder {
     private Collection<Room> listaCuartos;
     private Lector lector;
-    public RoomBuilder(Collection<Room> cuartos, Lector lectorArchivo){
-        listaCuartos = cuartos;
+    public RoomBuilder(Lector lectorArchivo){
+        listaCuartos = new ArrayList<>();
         lector = lectorArchivo;
     }
 
-    public Collection<Room> obtenerCuartos(){
+    private Collection<Room> obtenerCuartos(){
         String contenido = lector.leeArchivo("files/room.txt");
-        Collection<Room> Cuartos = new ArrayList<>();
         Scanner scanContenido = new Scanner(contenido);
         while(scanContenido.hasNextLine()){
             String linea = scanContenido.nextLine();
@@ -22,11 +21,11 @@ public class RoomBuilder {
             String nombre = datos.get(0).trim(); 
             String descripcion = datos.get(1);
             Room cuarto = new Room(nombre, descripcion);
-            Cuartos.add(cuarto);
+            listaCuartos.add(cuarto);
         }
         agregarSalidas();
         scanContenido.close();
-        return Cuartos;
+        return listaCuartos;
     }
 
     private void agregarSalidas(){
@@ -78,5 +77,9 @@ public class RoomBuilder {
             }
         }
         cuartoAsignar.setExits(oeste, este, norte, sur);
+    }
+
+    public Room obtenerPrimerCuarto(){
+        return this.obtenerCuartos().iterator().next();
     }
 }

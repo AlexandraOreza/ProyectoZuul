@@ -1,12 +1,12 @@
 import java.util.NoSuchElementException;
 
 public class Game {
-
     private Room currentRoom;
     private Lector lector;
-
+    private RoomBuilder roomBuilder;
     public void play(){
         lector = new Lector();
+        roomBuilder = new RoomBuilder(lector);
         createRooms();
         muestraBienvenida();
         leerComandos();
@@ -14,7 +14,7 @@ public class Game {
     
     public void createRooms(){ 
         try{
-        currentRoom = lector.obtenerCuartos().iterator().next();
+        currentRoom = roomBuilder.obtenerPrimerCuarto();
         }catch(NoSuchElementException e){
             currentRoom = null;
         }
@@ -24,10 +24,10 @@ public class Game {
         Parser entradaUsuario = new Parser();
         boolean salir = false;
         while(salir != true){
+        muestraDetallesCuarto();
         Command entrada = entradaUsuario.obtenerComando();
         if(entrada.contieneComando()){
             salir = determinaComando(entrada);
-            muestraDetallesCuarto();
         }else{
             System.out.println("¿Quisiste decir... ir, salir o ayuda?\n");
             }
@@ -39,8 +39,6 @@ public class Game {
         System.out.println("Bienvenido al mundo de Zuul");
         System.out.println("Mundo de Zuul es un nuevo, juego de aventura muy aburrido.");
         System.out.println("Escribe 'ayuda' si necesitas ayuda.");
-        System.out.println();
-        muestraDetallesCuarto();
         System.out.println();
     }
     private void mostrarAyuda(){
