@@ -6,22 +6,21 @@ import java.util.Scanner;
 public class Lector {
     private File archivo = null;
 
-    public String leeArchivo(String path){
+    public String leeArchivo(String path) {
         StringBuilder contenido = new StringBuilder();
-        try{
+        try {
             this.archivo = new File(path);
             Scanner scanArchivo = new Scanner(archivo);
-            while(scanArchivo.hasNextLine()){
+            while (scanArchivo.hasNextLine()) {
                 String linea = scanArchivo.nextLine();
-                contenido.append(linea+"\n");
+                contenido.append(linea + "\n");
             }
             scanArchivo.close();
-        }catch(NullPointerException  | FileNotFoundException e){
+        } catch (NullPointerException | FileNotFoundException e) {
             System.err.println("Ha ocurrido un error con el archivo indicado.");
         }
         return contenido.toString();
     }
-    
 }
 
 

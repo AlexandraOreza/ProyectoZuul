@@ -2,7 +2,7 @@ public class Command {
     private String comando;
     private String adicionComando;
 
-    public Command(String prefijo, String adicion){
+    public Command(String prefijo, String adicion) {
         comando = prefijo;
         adicionComando = adicion;
     }
@@ -15,12 +15,14 @@ public class Command {
         return adicionComando;
     }
     
-    public boolean contieneComando(){
+    public boolean contieneComando() {
         return comando != null ? true : false;
     }
-    public boolean contieneAdicionComando(){
-        return adicionComando != null ? true : false;
+
+    public boolean contieneAdicionComando() {
+      return adicionComando != null ? true : false;
     }
+
     public boolean esSalir(){
         return comando.equals("salir") ? true: false;
     }

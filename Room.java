@@ -7,29 +7,29 @@ public class Room {
     private Room northExit;
     private Room southExit;
 
-    public Room(String Name, String desc){
+    public Room(String Name, String desc) {
         name = Name;
         description = desc;
     }
 
-    public void setExits(Room westE, Room eastE, Room northE, Room southE){
-        if(westE != null){
+    public void setExits(Room westE, Room eastE, Room northE, Room southE) {
+        if (westE != null) {
             this.westExit = westE;
         }
-        if(eastE != null){
+        if (eastE != null) {
             this.eastExit = eastE;
         }
-        if(northE != null){
+        if (northE != null) {
             this.northExit = northE;
         }
-        if(southE != null){
+        if (southE != null) {
             this.southExit = southE;
         }
     }
 
     @Override
     public String toString() {
-        return name + " Description: "+description;
+        return name + " Description: " + description;
     }
 
     public String getName() {
@@ -40,24 +40,27 @@ public class Room {
         this.name = name;
     }
 
-    public void mostrarDirecciones(){
+    public void mostrarDirecciones() {
         StringBuilder cadena= new StringBuilder();
-        cadena = northExit != null ? cadena.append("Norte: "+northExit.getName()+", ") : cadena.append("");
-        cadena = westExit != null ? cadena.append("Oeste: "+westExit.getName()+", ") : cadena.append(" ");
-        cadena = eastExit != null ? cadena.append("Este: "+eastExit.getName()+", ") : cadena.append(" ");
-        cadena = southExit != null ? cadena.append("Sur: "+southExit.getName()) : cadena.append(" ");
+        cadena = northExit != null ? cadena.append("Norte: " + northExit.getName() + ", ") : cadena.append("");
+        cadena = westExit != null ? cadena.append("Oeste: " + westExit.getName() + ", ") : cadena.append(" ");
+        cadena = eastExit != null ? cadena.append("Este: " + eastExit.getName() + ", ") : cadena.append(" ");
+        cadena = southExit != null ? cadena.append("Sur: " + southExit.getName()) : cadena.append(" ");
         System.out.println(cadena);
     }
 
     public Room getWestExit() {
         return westExit;
     }
+
     public Room getEastExit() {
         return eastExit;
     }
+
     public Room getNorthExit() {
         return northExit;
     }
+
     public Room getSouthExit() {
         return southExit;
     }
@@ -65,5 +68,4 @@ public class Room {
     public void setSouthExit(Room southExit) {
         this.southExit = southExit;
     }
-    
 }
