@@ -13,11 +13,14 @@ public class Lector {
             Scanner scanArchivo = new Scanner(archivo);
             while (scanArchivo.hasNextLine()) {
                 String linea = scanArchivo.nextLine();
-                contenido.append(linea + "\n");
+                if(scanArchivo.hasNextLine())
+                    contenido.append(linea + "\n");
+                else
+                contenido.append(linea);
             }
             scanArchivo.close();
         } catch (NullPointerException | FileNotFoundException e) {
-            System.err.println("Ha ocurrido un error con el archivo indicado.");
+            System.out.println("Ha ocurrido un error con el archivo indicado.");
         }
         return contenido.toString();
     }
