@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "libs/junit-jupiter-engine-5.8.2.jar",
+        "libs/jcommander-1.81.jar",
+        "libs/testng-7.4.0.jar"
+    ]
+}
